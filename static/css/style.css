@@ -1,0 +1,422 @@
+/* Premium landing page + transactions styling */
+:root {
+  --bg: #f3f7ff;
+  --bg-strong: #eaf1ff;
+  --panel: rgba(255, 255, 255, 0.9);
+  --panel-strong: #ffffff;
+  --primary: #1d4ed8;
+  --primary-dark: #133ab0;
+  --primary-soft: #eaf1ff;
+  --text: #122033;
+  --muted: #53657b;
+  --border: #dfe8f4;
+  --success: #0f9f6e;
+  --danger: #dc2626;
+  --shadow: 0 20px 50px rgba(18, 32, 51, 0.12);
+  --radius: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(29, 78, 216, 0.08), transparent 25%),
+    linear-gradient(180deg, #f7faff 0%, var(--bg) 100%);
+  overflow-x: hidden;
+}
+
+header {
+  background: linear-gradient(135deg, #081426 0%, #163a69 55%, #1d4ed8 100%);
+  color: #ffffff;
+  padding: 1.5rem clamp(1rem, 3vw, 2rem);
+  box-shadow: 0 12px 28px rgba(8, 20, 38, 0.18);
+}
+
+header h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 2.9rem);
+  letter-spacing: 0.04em;
+  font-weight: 800;
+}
+
+nav {
+  background: rgba(255, 255, 255, 0.78);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.4rem;
+  margin: 0;
+  padding: 1rem 1.5rem;
+}
+
+nav li {
+  display: inline-block;
+}
+
+nav a {
+  display: inline-block;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 700;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  transition: all 0.2s ease;
+}
+
+nav a:hover,
+nav a:focus-visible {
+  background: var(--primary-soft);
+  color: var(--primary-dark);
+  outline: none;
+}
+
+main {
+  width: min(100% - 1.5rem, 1100px);
+  margin: 2.5rem auto;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 4px);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+main h2,
+main h3 {
+  margin-top: 0;
+  color: var(--text);
+}
+
+main h2 {
+  margin-bottom: 1rem;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+}
+
+main h3 {
+  margin-bottom: 1rem;
+  font-size: 1.35rem;
+}
+
+main p {
+  margin: 0 0 1rem;
+  line-height: 1.7;
+  color: var(--muted);
+  font-size: 1.04rem;
+}
+
+strong {
+  color: var(--text);
+}
+
+#pay-period,
+#transaction-overview {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid rgba(29, 78, 216, 0.15);
+  border-radius: 14px;
+  background: linear-gradient(180deg, #f7faff 0%, #edf4ff 100%);
+  color: var(--primary-dark);
+  font-weight: 700;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+#transaction-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem 1.25rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+#transaction-overview p {
+  margin: 0;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--border);
+}
+
+#transaction-form-section,
+#transactions-list-section {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  margin-top: 1.8rem;
+  box-shadow: 0 10px 25px rgba(17, 24, 39, 0.04);
+}
+
+#transaction-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem 1.2rem;
+  align-items: end;
+}
+
+#transaction-form > * {
+  grid-column: 1 / -1;
+}
+
+#transaction-form label {
+  margin-bottom: 0.5rem;
+  font-size: 0.96rem;
+}
+
+#transaction-form button,
+#transaction-form #cancel-edit-btn {
+  max-width: 220px;
+  width: 100%;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.45rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-size: 1rem;
+  background: #ffffff;
+  color: var(--text);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+select:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.12);
+}
+
+button {
+  align-self: end;
+  padding: 0.9rem 1.2rem;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  box-shadow: 0 12px 20px rgba(29, 78, 216, 0.18);
+}
+
+button:hover,
+button:focus-visible {
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+  box-shadow: 0 16px 24px rgba(29, 78, 216, 0.22);
+  outline: none;
+}
+
+#cancel-edit-btn {
+  background: linear-gradient(135deg, #f3f6fa 0%, #e9eef7 100%);
+  color: var(--text);
+  border: 1px solid var(--border);
+  box-shadow: none;
+}
+
+#transactions-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.75rem;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: #ffffff;
+}
+
+#transactions-table th,
+#transactions-table td {
+  padding: 1rem 0.9rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+#transactions-table thead th {
+  background: linear-gradient(180deg, #f8fbff 0%, #edf4ff 100%);
+  color: var(--text);
+  font-size: 0.92rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+#transactions-table tbody tr:hover {
+  background: #f8fbff;
+}
+
+#transactions-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+#transactions-table td button {
+  margin: 0.2rem 0.35rem 0.2rem 0;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+#transactions-table .transaction-income {
+  color: var(--success);
+  font-weight: 700;
+}
+
+#transactions-table .transaction-expense {
+  color: var(--danger);
+  font-weight: 700;
+}
+
+#no-transactions-row td {
+  color: var(--muted);
+  font-style: italic;
+  text-align: center;
+  padding: 1.2rem;
+}
+
+footer {
+  padding: 1.5rem 1rem 2.25rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+@media (min-width: 768px) {
+  #transaction-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #transaction-form > label,
+  #transaction-form > input,
+  #transaction-form > select,
+  #transaction-form > button,
+  #transaction-form > #cancel-edit-btn {
+    grid-column: auto;
+  }
+
+  #transaction-form #transaction-description,
+  #transaction-form #transaction-type,
+  #transaction-form #transaction-date,
+  #transaction-form #transaction-amount {
+    min-height: 3.1rem;
+  }
+
+  #transaction-form > #transaction-description {
+    grid-column: 1 / -1;
+  }
+
+  #transaction-form > #save-transaction-btn,
+  #transaction-form > #cancel-edit-btn {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 900px) {
+  main {
+    width: min(100% - 1rem, 960px);
+  }
+
+  #transaction-overview {
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  nav ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-content: stretch;
+    padding: 0.8rem 1rem;
+    gap: 0.6rem;
+  }
+
+  nav li {
+    display: flex;
+  }
+
+  nav a {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  main {
+    width: min(100% - 0.75rem, 900px);
+    margin-top: 1.5rem;
+  }
+
+  #transaction-form {
+    grid-template-columns: 1fr;
+  }
+
+  #transactions-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 560px) {
+  header {
+    padding: 1.2rem 1rem;
+  }
+
+  header h1 {
+    font-size: clamp(1.7rem, 8vw, 2.2rem);
+  }
+
+  nav ul {
+    grid-template-columns: 1fr;
+  }
+
+  main {
+    padding: 1.2rem 1rem;
+  }
+
+  main h2 {
+    font-size: clamp(1.7rem, 7vw, 2.1rem);
+  }
+
+  #transaction-form-section,
+  #transactions-list-section {
+    padding: 0.9rem;
+  }
+
+  #transaction-overview p {
+    padding: 0.8rem 0.9rem;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 0.25rem;
+  }
+}
