@@ -25,6 +25,24 @@
                 <h1>Secure Money Vault</h1>
             </a>
         </header>
+        {% if user.is_authenticated %}
+            <nav>
+                <ul>
+                    <li><a href="{% url 'budget_overview' %}">Budget Overview</a></li>
+                    <li><a href="{% url 'transactions' %}">Transactions</a></li>
+                    <li><a href="{% url 'reports' %}">Reports</a></li>
+                    <li><a href="{% url 'account' %}">Account</a></li>
+                    <li><a href="{% url 'account_logout' %}">Logout</a></li>
+                </ul>
+            </nav>
+        {% else %}
+            <nav>
+                <ul>
+                    <li><a href="{% url 'account_login' %}">Login</a></li>
+                    <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+                </ul>
+            </nav>
+        {% endif %}
         <main>
             {%block content %}
             <h2>Secure Money Vault</h2> <!-- Landing Page Content -->
