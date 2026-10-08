@@ -17,7 +17,7 @@
         <meta name="description" content="Secure Money Vault - Manage your finances securely.">
         <meta name="keywords" content="finance, budget, transactions, reports, account management">
         <title>Secure Money Vault</title>
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     </head>
     <body>
         <header>
@@ -34,6 +34,7 @@
             </ul>
         </nav>
         <main>
+            {%block content %}
             <h2>Secure Money Vault</h2> <!-- Landing Page Content -->
             <p>
                 Welcome to the Secure Money Vault, 
@@ -48,11 +49,12 @@
             <label for="temp-input">Enter Pay Amount:</label>
             <input type="text" id="temp-input" placeholder="Enter your pay amount">
             <button id="calculate-btn">Calculate Spending</button>
+            {% endblock %}
         </main>
         <footer>
             <p>&copy; 2026 Secure Money Vault. All rights reserved.</p>
         </footer>
-        <script src="assets/js/script.js"></script>
+        <script src="{% static 'js/script.js' %}"></script>
     </body>
 
 </html>
