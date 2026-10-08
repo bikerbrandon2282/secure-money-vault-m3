@@ -1,0 +1,58 @@
+{% load static %}
+
+{% url 'home' as home_url %}
+{% url 'account_login' as login_url %}
+{% url 'account_signup' as signup_url %}
+{% url 'account_logout' as logout_url %}
+
+
+<!DOCTYPE html>
+<html>
+
+<!-- This is  the Landing Page before anyone signs in-->
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Secure Money Vault - Manage your finances securely.">
+        <meta name="keywords" content="finance, budget, transactions, reports, account management">
+        <title>Secure Money Vault</title>
+        <link rel="stylesheet" href="assets/css/style.css">
+    </head>
+    <body>
+        <header>
+            <a href="index.html">
+                <h1>Secure Money Vault</h1>
+            </a>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="#overview">Budget Overview</a></li>
+                <li><a href="transactions.html">Transactions</a></li>
+                <li><a href="#reports">Reports</a></li>
+                <li><a href="#account">Account</a></li>
+            </ul>
+        </nav>
+        <main>
+            <h2>Secure Money Vault</h2> <!-- Landing Page Content -->
+            <p>
+                Welcome to the Secure Money Vault, 
+                your trusted platform for managing your finances securely. 
+                Our application provides a comprehensive overview of your budget, 
+                tracks your transactions, generates detailed reports, 
+                and allows you to manage your account with ease.
+            </p>
+            <div id="pay-period"></div>
+
+            <br>
+            <label for="temp-input">Enter Pay Amount:</label>
+            <input type="text" id="temp-input" placeholder="Enter your pay amount">
+            <button id="calculate-btn">Calculate Spending</button>
+        </main>
+        <footer>
+            <p>&copy; 2026 Secure Money Vault. All rights reserved.</p>
+        </footer>
+        <script src="assets/js/script.js"></script>
+    </body>
+
+</html>
