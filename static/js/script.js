@@ -1,12 +1,13 @@
 const PAYDAY_WEEKDAY = 4; // 0=Sun, 4=Thu
+let bills_weekly = 376.10; // This amount is mine, however this will be adjusted for user input.
 
 /**
  * Calculates the date of the next payday based on the current date and payday weekday.
  * 
  */
-function getNextPayday(date, paydayWeekday = PAYDAY_WEEKDAY) {
+function getNextPayday(date, payday = PAYDAY_WEEKDAY) {
   const dayIndex = date.getDay();
-  let diff = paydayWeekday - dayIndex;
+  let diff = payday - dayIndex;
 
   if (diff < 0) diff += 7;
 
@@ -48,9 +49,9 @@ function getCurrentPayPeriod() {
 const period = getCurrentPayPeriod();
 document.getElementById("pay-period").innerText =`Current Pay Period: ${period.start.toDateString()} → ${period.end.toDateString()}`;
 
-let tempButton = document.getElementById("calculate-btn");
-tempButton.addEventListener("click", function() {
-  let tempCalc = document.getElementById("temp-input");
-  let spending = tempCalc.value - 376.10;
-  tempCalc.value = `${spending.toFixed(2)}`;
+let calcButton = document.getElementById("calculate-btn");
+calcButton.addEventListener("click", function() {
+  let Calc = document.getElementById("temp-input");
+  let spending = Calc.value - Bills_weekly;
+  Calc.value = `${spending.toFixed(2)}`;
 });
