@@ -15,6 +15,8 @@ from pathlib import Path
 import sys
 import dj_database_url
 from django.contrib.messages import constants as messages
+if os.path.isfile('env.py'):
+    import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent

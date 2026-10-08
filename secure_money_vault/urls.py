@@ -25,5 +25,6 @@ admin.site.login = secure_admin_login(admin.site.login)
 urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),
+    path('', include('homepage.urls')),
     
 ]
