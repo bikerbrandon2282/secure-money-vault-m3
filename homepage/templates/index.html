@@ -1,8 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <nav>
+        <ul>
+            <li><a href="{% url 'budget_overview' %}">Budget Overview</a></li>
+            <li><a href="{% url 'transactions' %}">Transactions</a></li>
+            <li><a href="{% url 'reports' %}">Reports</a></li>
+            <li><a href="{% url 'account' %}">Account</a></li>
+        </ul>
+    </nav>
     <h2>Welcome to the Secure Money Vault</h2>
     <p>
         Your trusted platform for managing your finances securely.
+
+        Sign up or Login in to continue your personalized budget journey or alternatively you can use
     </p>
 {% endblock %}
