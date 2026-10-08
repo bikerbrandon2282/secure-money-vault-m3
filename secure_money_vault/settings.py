@@ -104,6 +104,11 @@ SOCIALACCOUNT_PROVIDERS = {
         # email address(es) retrieved from the provider are to be
         # interpreted as verified.
         "VERIFIED_EMAIL": True,
+        'APP': {
+                    'client_id': os.environ.get("GITHUB_CLIENT_ID"),
+                    'secret': os.environ.get("GITHUB_SECRET"),
+                    'key': ''
+                },
     },
 }
 
