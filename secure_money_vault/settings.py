@@ -87,8 +87,8 @@ SOCIALACCOUNT_PROVIDERS = {
         'EMAIL_AUTHENTICATION': True,
         "VERIFIED_EMAIL": True,
         'APP': {
-            'client_id': '123',
-            'secret': '456',
+            'client_id': env.GOOGLE_CLIENT_ID,
+            'secret': env.GOOGLE_SECRET,
             'key': ''
         },
         'SCOPE': [
