@@ -15,8 +15,9 @@ from pathlib import Path
 import sys
 import dj_database_url
 from django.contrib.messages import constants as messages
-import env
-from env import GOOGLE_CLIENT_ID, GOOGLE_SECRET
+if os.path.isfile('env.py'):
+    import env
+    from env import GOOGLE_CLIENT_ID, GOOGLE_SECRET
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -85,7 +86,7 @@ MIDDLEWARE = [
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'EMAIL_AUTHENTICATION': True,
-        'VERIFIED_EMAIL': True,
+        "VERIFIED_EMAIL": True,
         'APP': {
             'client_id': GOOGLE_CLIENT_ID,
             'secret': GOOGLE_SECRET,
