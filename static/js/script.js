@@ -67,8 +67,8 @@ calcButton.addEventListener("click", () => {
     calcButton.innerText = "Calculate Spending";
   }
   else if (restart == true) {
-    label.innerText = "Enter Pay Amount:";
-    input.setAttribute("placeholder", "Enter your pay amount");
+    label.innerText = "Enter Weekly Pay Amount:";
+    input.setAttribute("placeholder", "Enter your weekly pay amount");
     calcButton.innerText = "Submit";
     input.value = "";
     restart = false;
