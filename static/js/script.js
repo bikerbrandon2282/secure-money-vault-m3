@@ -1,4 +1,5 @@
 const PAYDAY_WEEKDAY = 4; // 0=Sun, 4=Thu
+let paycheck = 0; // This amount will be adjusted for user input.
 let bills_weekly = 376.10; // This amount is mine, however this will be adjusted for user input.
 
 /**
@@ -51,24 +52,34 @@ document.getElementById("pay-period").innerText =`Current Pay Period: ${period.s
 
 let calcButton = document.getElementById("calculate-btn");
 let awaiting_bills = false;
-let paycheck = 0;
+let restart = false;
 calcButton.addEventListener("click", () => {
 
   const input =document.getElementById("calc-input");
   const label = document.getElementById("pay-label");
-  if (!awaiting_bills) {
+  if (!awaiting_bills && !restart) {
     //First press, get paycheck amount
     paycheck = parseFloat(input.value);
     awaiting_bills = true;
     label.innerText = "Enter Weekly Bills:";
     input.setAttribute("placeholder", "Enter your weekly bills");
     input.value = "";
+    calcButton.innerText = "Calculate Spending";
   }
-  else if (awaiting_bills) {
-    let bills_weekly = parseFloat(input.value);
+  else if (restart == true) {
+    label.innerText = "Enter Pay Amount:";
+    input.setAttribute("placeholder", "Enter your pay amount");
+    calcButton.innerText = "Submit";
+    input.value = "";
+    restart = false;
+  }
+  else {
+    input.value != "" ? bills_weekly = parseFloat(input.value) : bills_weekly = bills_weekly; // Keep the default if no input is provided
     let spending = paycheck - bills_weekly;
     label.innerText = "Your leftover spending money is:";
-    input.setAttribute("placeholder", "Enter your pay amount");
     input.value = `${spending.toFixed(2)}`;
+    calcButton.innerText = "Restart";
+    awaiting_bills = false;
+    restart = true;
   }
 });
