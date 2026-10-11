@@ -50,8 +50,25 @@ const period = getCurrentPayPeriod();
 document.getElementById("pay-period").innerText =`Current Pay Period: ${period.start.toDateString()} → ${period.end.toDateString()}`;
 
 let calcButton = document.getElementById("calculate-btn");
-calcButton.addEventListener("click", function() {
-  let Calc = document.getElementById("temp-input");
-  let spending = Calc.value - Bills_weekly;
-  Calc.value = `${spending.toFixed(2)}`;
+let awaiting_bills = false;
+let paycheck = 0;
+calcButton.addEventListener("click", () => {
+
+  const input =document.getElementById("calc-input");
+  const label = document.getElementById("pay-label");
+  if (!awaiting_bills) {
+    //First press, get paycheck amount
+    paycheck = parseFloat(input.value);
+    awaiting_bills = true;
+    label.innerText = "Enter Weekly Bills:";
+    input.setAttribute("placeholder", "Enter your weekly bills");
+    input.value = "";
+  }
+  else if (awaiting_bills) {
+    let bills_weekly = parseFloat(input.value);
+    let spending = paycheck - bills_weekly;
+    label.innerText = "Your leftover spending money is:";
+    input.setAttribute("placeholder", "Enter your pay amount");
+    input.value = `${spending.toFixed(2)}`;
+  }
 });
