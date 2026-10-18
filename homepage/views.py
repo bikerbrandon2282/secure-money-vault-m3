@@ -23,6 +23,7 @@ def add_transaction(request):
     if request.method == 'POST':
         if transaction_form.is_valid():
             form = transaction_form.save(commit=False)
+            form.user = request.user  # Set the user to the currently logged-in user
             form.save()
             messages.success(request, 'Transaction added successfully!')
     transaction_form = TransactionForm()  # Reset the form after saving
