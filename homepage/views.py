@@ -18,7 +18,7 @@ def index(request):
 def budget_overview(request):
     return render (request, 'budget_overview.html')
 
-def transactions(request):
+def add_transaction(request):
     transaction_form = TransactionForm(request.POST)
     if request.method == 'POST':
         if transaction_form.is_valid():
