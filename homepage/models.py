@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.utils import timezone
 
 # Create your models here.
@@ -27,13 +28,14 @@ category_choices = (
     (11, 'Other'),
 )
 class transaction(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name = 'budget_user')
     transaction_id = models.CharField(max_length=100, unique=True)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     type = models.IntegerField(choices=type_choices, default=2)
-    date = models.DateTimeField()
+    date = models.DateTimeField(default=timezone.now)
     currency = models.IntegerField(choices=currency_choices, default=1)
     category = models.IntegerField(choices=category_choices, default=1)
-    description = models.CharField(max_length=500, unique=True)
+    description = models.CharField(max_length=500)
 
     def __str__(self):
         return f"Transaction {self.transaction_id} - Amount: {self.amount}"
