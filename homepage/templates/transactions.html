@@ -14,7 +14,7 @@
 		<section id="transaction-form-section">
 			<h3>Add or Edit Transaction</h3>
 			<form id="transaction-form" method="post">
-				{{ crispy transaction_form }}
+				{{transaction_form | crispy }}
 				{% csrf_token %}
 				
 				<button type="submit" id="save-transaction-btn">Add Transaction</button>
