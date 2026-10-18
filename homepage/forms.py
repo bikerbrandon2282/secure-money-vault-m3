@@ -11,7 +11,6 @@ class TransactionForm(forms.ModelForm):
         fields = ['description', 'amount', 'type', 'date', 'currency', 'category']
         widgets = {
             'date': DateTimeInput(attrs={'type': 'datetime-local', 'class': 'width-small'}),
-            'category' : Select(attrs={'class': 'form-control'}),
             'currency' : Select(attrs={'class': 'width-small'}),
             'category': Select(attrs={'class': 'width-small'}),
         }
