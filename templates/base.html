@@ -21,6 +21,9 @@
         <meta name="description" content="Secure Money Vault - Manage your finances securely.">
         <meta name="keywords" content="finance, budget, transactions, reports, account management">
         <title>Secure Money Vault</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+        rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
+        crossorigin="anonymous">
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
     </head>
     <body>
@@ -57,7 +60,9 @@
                 tracks your transactions, generates detailed reports, 
                 and allows you to manage your account with ease.
             </p>
-            <div id="pay-period"></div>
+            <div>
+                <p id="pay-period"></p>
+            </div>
 
             <br>
             <label for="calc-input" id="pay-label">Enter Weekly Pay Amount:</label>
@@ -70,6 +75,9 @@
             <p>&copy; 2026 Secure Money Vault. All rights reserved.</p>
         </footer>
         <script src="{% static 'js/script.js' %}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
+        crossorigin="anonymous"></script>
     </body>
 
 </html>
