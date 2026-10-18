@@ -23,8 +23,6 @@ def add_transaction(request):
     if request.method == 'POST':
         if transaction_form.is_valid():
             form = transaction_form.save(commit=False)
-            if transaction_form.date == None:
-                form.date = timezone.now()
             form.save()
             messages.success(request, 'Transaction added successfully!')
     transaction_form = TransactionForm()  # Reset the form after saving
