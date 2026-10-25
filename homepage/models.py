@@ -27,9 +27,27 @@ category_choices = (
     (10, 'Travel'),
     (11, 'Other'),
 )
-class transaction(models.Model):
+
+
+def generate_transaction_id():
+    '''
+    Generates a Transaction ID for the user using the models Primary key
+    '''
+    last = Transaction.objects.order_by('-id').first()
+
+    if last:
+        # Extract the numeric part
+        last_num = int(last.transaction_id)
+        new_num = last_num + 1
+    else:
+        new_num = 1
+
+    return f"{new_num:04d}"   # formats 0 → "0000", 12 → "0012"
+
+
+class Transaction(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name = 'budget_user')
-    transaction_id = models.CharField(max_length=100, unique=True)
+    transaction_id = models.CharField(max_length=100, default = generate_transaction_id ,unique=True)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     type = models.IntegerField(choices=type_choices, default=2)
     date = models.DateTimeField(default=timezone.now)
