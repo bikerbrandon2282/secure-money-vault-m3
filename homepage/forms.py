@@ -1,4 +1,4 @@
-from .models import transaction
+from .models import Transaction
 from django import forms
 from django.forms import DateTimeInput, Select
 from crispy_forms.helper import FormHelper
@@ -7,7 +7,7 @@ from crispy_forms.layout import Div, Field, Layout, MultiField, Row, Column
 
 class TransactionForm(forms.ModelForm):
     class Meta:
-        model = transaction
+        model = Transaction
         fields = ['description', 'amount', 'type', 'date', 'currency', 'category']
         widgets = {
             'date': DateTimeInput(format='%Y-%m-%dT%H:%M',attrs={'type': 'datetime-local', 'class': 'width-small'}),
