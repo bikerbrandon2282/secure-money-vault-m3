@@ -117,6 +117,27 @@ main p {
   font-weight: 700;
 }
 
+/* Transactions table on the transactions page to display transaction history */
+
+#transactions-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#transactions-table th,
+#transactions-table td {
+    padding: 12px;
+    text-align: left;
+}
+
+#transactions-table th {
+    font-weight: bold;
+}
+
+#transactions-table tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+
 label {
   display: block;
   margin-bottom: 0.45rem;
