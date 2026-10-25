@@ -2,10 +2,11 @@ from django.utils import timezone
 
 from django.contrib import messages
 from django.shortcuts import render
-from .models import transaction
+from .models import Transaction
 from .forms import TransactionForm
 # from django.http import HttpResponse
 # Create your views here.
+
 
 '''
 These are functions to render the different pages of the website. 
@@ -27,7 +28,8 @@ def add_transaction(request):
             form.save()
             messages.success(request, 'Transaction added successfully!')
     transaction_form = TransactionForm()  # Reset the form after saving
-    return render(request, 'transactions.html', {'transaction_form': transaction_form})
+    transactions = Transaction.objects.filter(user=request.user)
+    return render(request, 'transactions.html', {'transaction_form': transaction_form, 'transactions': transactions})
 
 def reports(request):
     return render (request, 'reports.html')
