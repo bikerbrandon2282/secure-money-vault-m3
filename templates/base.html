@@ -61,6 +61,14 @@
                 </ul>
             </nav>
         {% endif %}
+        {% if messages %}
+            <div>
+                <strong>Messages:</strong>
+                <ul>
+                    {% for message in messages %}<li>{{ message }}</li>{% endfor %}
+                </ul>
+            </div>
+        {% endif %}
         <main>
             {%block content %}
             <h2>Secure Money Vault</h2> <!-- Landing Page Content -->
