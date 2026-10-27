@@ -16,10 +16,19 @@ to return the appropriate HTML template.
 def index(request):
     return render (request, 'base.html')
 
+
 def budget_overview(request):
-    return render (request, 'budget_overview.html')
+    '''
+    This is a Function to render the budget_overview page,
+    However this has not currently been implemented and will render a basic 404 page.
+    '''
+    return render (request, '404.html') # Eventually renders to budget_overview.html
+
 
 def add_transaction(request):
+    '''
+    This is the function for adding a transaction to the database
+    '''
     transaction_form = TransactionForm(request.POST)
     if request.method == 'POST':
         if transaction_form.is_valid():
@@ -31,9 +40,19 @@ def add_transaction(request):
     transactions = Transaction.objects.filter(user=request.user)
     return render(request, 'transactions.html', {'transaction_form': transaction_form, 'transactions': transactions})
 
+
+
 def reports(request):
-    return render (request, 'reports.html')
+    '''
+    This is a Function to render the reports page,
+    However this has not currently been implemented and will render a basic 404 page.
+    '''
+    return render (request, '404.html') # Eventually will be rendered to reports.html
+
 
 def account(request):
+    '''
+    This is the function to render the Account page
+    '''
     return render (request, 'account.html')
 
