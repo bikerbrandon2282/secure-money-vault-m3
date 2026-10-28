@@ -1,13 +1,10 @@
 {% extends "base.html" %}
 {% load static allauth i18n %}
-{% block head_title %}
-    {% trans "Email Addresses" %}
-{% endblock head_title %}
 {% block content %}
-    {% element h1 %}
-        {% trans "Email Addresses" %}
-    {% endelement %}
     {% if emailaddresses %}
+        {% element h1 %}
+            {% trans "Email Address" %}
+        {% endelement %}
         {% element p %}
             {% trans 'The following email address is associated with your account:' %}
         {% endelement %}
@@ -15,14 +12,9 @@
         {% element form form=form action=email_url method="post" tags="email,list" %}
             {% slot body %}
                 {% csrf_token %}
-                {% for radio in emailaddress_radios %}
-                    {% with emailaddress=radio.emailaddress %}
-                        {% element field type="radio" checked=radio.checked name="email" value=emailaddress.email id=radio.id %}
-                            {% slot label %}
-                                {{ emailaddress.email }}
-                            {% endslot %}
-                        {% endelement %}
-                    {% endwith %}
+                {% for emailaddress in emailaddresses %}
+                    <p><strong>{{ emailaddress.email }}</strong></p>
+                    <input type="hidden" name="email" value="{{ emailaddress.email }}">
                 {% endfor %}
             {% endslot %}
             {% slot actions %}
