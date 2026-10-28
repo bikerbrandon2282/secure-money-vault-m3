@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% url 'delete_user' as delete_url %}
+{% url 'change_currency' as change_currency %}
+{% block content %}
+<section aria-labelledby="account-title">
+	<h2 id="account-title">Account settings</h2>
+	<p>Manage your sign-in details and account.</p>
+
+    <section aria-labelledby="currency-title">
+        <h3 id="currency-title">Currency Preference</h3>
+        <form method="post" action="{% url 'change_currency' %}">
+            {% csrf_token %}
+            <label for="currency">Change Currency</label>
+            <select name="currency" id="currency">
+                <option value="1" {% if profile.currency == 1 %}selected{% endif %}>GBP</option>
+                <option value="2" {% if profile.currency == 2 %}selected{% endif %}>USD</option>
+                <option value="3" {% if profile.currency == 3 %}selected{% endif %}>Euro</option>
+                <option value="4" {% if profile.currency == 4 %}selected{% endif %}>Japanese Yen</option>
+                <option value="5" {% if profile.currency == 5 %}selected{% endif %}>Indian Rupee</option>
+            </select>
+            <button type="submit">Save Currency</button>
+        </form>
+    </section>
+
+	<section aria-labelledby="email-title">
+		<h3 id="email-title">Change email address</h3>
+		<form method="post" action="{% url 'account_email' %}">
+			{% csrf_token %}
+			<label for="email">New email address</label>
+			<input type="email" name="email" id="email" autocomplete="email" required>
+			<button type="submit" name="action_add">Change email</button>
+		</form>
+	</section>
+
+	<section aria-labelledby="password-title">
+		<h3 id="password-title">Change password</h3>
+		<form method="post" action="{% url 'account_change_password' %}">
+			{% csrf_token %}
+			<label for="oldpassword">Current password</label>
+			<input type="password" name="oldpassword" id="oldpassword" autocomplete="current-password" required>
+
+			<label for="password1">New password</label>
+			<input type="password" name="password1" id="password1" autocomplete="new-password" required>
+
+			<label for="password2">Confirm new password</label>
+			<input type="password" name="password2" id="password2" autocomplete="new-password" required>
+			<button type="submit">Update password</button>
+		</form>
+	</section>
+
+	<section aria-labelledby="session-title">
+		<h3 id="session-title">Sign out</h3>
+		<form method="post" action="{% url 'account_logout' %}">
+			{% csrf_token %}
+			<button type="submit">Log out</button>
+		</form>
+	</section>
+
+	<section aria-labelledby="delete-title">
+		<h3 id="delete-title">Delete account</h3>
+		<p>This action is permanent and cannot be undone.</p>
+		<form method="post" action="{% url 'delete_user' %}" onsubmit="return confirm('Permanently delete your account? This cannot be undone.');">
+			{% csrf_token %}
+			<label for="delete_password">Confirm your password</label>
+			<input type="password" name="password" id="delete_password" autocomplete="current-password" required>
+			<button type="submit">Delete my account</button>
+		</form>
+	</section>
+</section>
+{% endblock %}
