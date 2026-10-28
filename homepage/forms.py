@@ -8,10 +8,9 @@ from crispy_forms.layout import Div, Field, Layout, MultiField, Row, Column
 class TransactionForm(forms.ModelForm):
     class Meta:
         model = Transaction
-        fields = ['description', 'amount', 'type', 'date', 'currency', 'category']
+        fields = ['description', 'amount', 'type', 'date', 'category']
         widgets = {
             'date': DateTimeInput(format='%Y-%m-%dT%H:%M',attrs={'type': 'datetime-local', 'class': 'width-small'}),
-            'currency' : Select(attrs={'class': 'width-small'}),
             'category': Select(attrs={'class': 'width-small'}),
         }
     def __init__(self, *args, **kwargs):
@@ -23,6 +22,5 @@ class TransactionForm(forms.ModelForm):
             'amount',
             'type',
             'date',
-            'currency',
             'category',
         )

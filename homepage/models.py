@@ -51,9 +51,31 @@ class Transaction(models.Model):
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     type = models.IntegerField(choices=type_choices, default=2)
     date = models.DateTimeField(default=timezone.now)
-    currency = models.IntegerField(choices=currency_choices, default=1)
     category = models.IntegerField(choices=category_choices, default=1)
     description = models.CharField(max_length=500)
 
     def __str__(self):
         return f"Transaction {self.transaction_id} - Amount: {self.amount}"
+
+class Profile(models.Model):
+
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE
+    )
+
+    currency = models.IntegerField(
+        choices=currency_choices,
+        default=1
+    )
+
+    @property
+    def currency_symbol(self):
+        symbols = {
+            1: '£',
+            2: '$',
+            3: '€',
+            4: '¥',
+            5: '₹',
+        }
+        return symbols.get(self.currency, '£')
