@@ -148,19 +148,22 @@ label {
 input {
   width: 100%;
   padding: 0.9rem 1rem;
-  border: 1px solid #dfe8f4;
+  border: 1px solid #9ba3ad;
   border-radius: 12px;
   font-size: 1rem;
-  color: #122033;
+  color: #0e1724;
 }
 
 input:focus{
   border-color: #1d4ed8;
   box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.12);
 }
+input[type="radio"][name="email"] {
+    display: none;
+}
 
 /* Buttons */
-button {
+button, .button {
   padding: 0.9rem 1.2rem;
   border: solid 1px #1d4ed8;
   border-radius: 12px;
