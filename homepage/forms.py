@@ -26,4 +26,3 @@ class TransactionForm(forms.ModelForm):
             'currency',
             'category',
         )
-        print("FORM FIELDS:", list(self.fields.keys()))
