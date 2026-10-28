@@ -5,10 +5,10 @@
 	
 		<h2>Transaction Overview</h2>
 		<section id="transaction-overview" aria-label="Transaction overview">
-			<p>Total income: <strong id="total-income">$0.00</strong></p>
-		<p>Total expenses: <strong id="total-expenses">$0.00</strong></p>
-			<p>Balance: <strong id="transaction-balance">$0.00</strong></p>
-			<p>Transactions: <strong id="transaction-count">0</strong></p>
+			<p>Total income: <strong id="total-income">{{currency_symbol}}{{total_income}}</strong></p>
+		<p>Total expenses: <strong id="total-expenses">{{currency_symbol}}{{total_expenses}}</strong></p>
+			<p>Balance: <strong id="transaction-balance">{{currency_symbol}}{{balance}}</strong></p>
+			<p>Transactions: <strong id="transaction-count">{{transaction_count}}</strong></p>
 		</section>
 
 		<section id="transaction-form-section">
@@ -43,7 +43,7 @@
 							<td>{{ transaction.description }}</td>
 							<td>{{ transaction.get_type_display }}</td>
 							<td>{{ transaction.get_category_display }}</td>
-							<td>${{ transaction.amount|floatformat:2 }}</td>
+							<td>{{currency_symbol}}{{ transaction.amount|floatformat:2 }}</td>
 							<td>
 								<button type="button" class="btn btn-primary edit-transaction-btn" data-id="{{ transaction.id }}">Edit</button>
 								<button type="button" class="btn btn-danger delete-transaction-btn" data-id="{{ transaction.id }}">Delete</button>
