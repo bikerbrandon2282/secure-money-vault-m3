@@ -68,6 +68,7 @@ def delete_user(request):
 
     logout(request)      # Remove session
     user.delete()        # Delete user
+    messages.success(request, 'User Account Deleted!')
     return redirect("home")
 
 
