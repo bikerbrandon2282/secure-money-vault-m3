@@ -59,15 +59,9 @@ class Transaction(models.Model):
 
 class Profile(models.Model):
 
-    user = models.OneToOneField(
-        User,
-        on_delete=models.CASCADE
-    )
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    currency = models.IntegerField(
-        choices=currency_choices,
-        default=1
-    )
+    currency = models.IntegerField(choices=currency_choices, default=1)
 
     @property
     def currency_symbol(self):
