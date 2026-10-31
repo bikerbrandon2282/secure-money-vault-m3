@@ -107,6 +107,7 @@ document.querySelectorAll('.edit-btn').forEach(button => {
   button.addEventListener('click', function () {
 
     const row = this.closest('tr');
+    document.getElementById('transaction-form').scrollIntoView({ behavior: 'smooth' });
 
     document.getElementById('transaction-id').value = row.dataset.id;
 
@@ -121,6 +122,7 @@ document.querySelectorAll('.edit-btn').forEach(button => {
     document.getElementById('id_category').value = row.dataset.category;
 
     submitButton.innerText = "Update";
+    
   });
 });
 /**
