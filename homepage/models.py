@@ -15,18 +15,17 @@ currency_choices = (
     (5, 'Indian Rupee'),
 )
 category_choices = (
-    (1, 'Select An Option'),
-    (2, 'Rent'),
-    (3, 'Food'),
-    (4, 'Transportation'),
-    (5, 'Entertainment'),
-    (6, 'Utilities'),
-    (7, 'Healthcare'),
-    (8, 'Education'),
-    (9, 'Shopping'),
-    (10, 'Travel'),
-    (11, 'Other'),
-    (12, 'Salary'),
+    (1, 'Rent'),
+    (2, 'Food'),
+    (3, 'Transportation'),
+    (4, 'Entertainment'),
+    (5, 'Utilities'),
+    (6, 'Healthcare'),
+    (7, 'Education'),
+    (8, 'Shopping'),
+    (9, 'Travel'),
+    (10, 'Other'),
+    (11, 'Salary'),
 )
 
 
@@ -52,7 +51,7 @@ class Transaction(models.Model):
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     type = models.IntegerField(choices=type_choices, default=2)
     date = models.DateTimeField(default=timezone.now)
-    category = models.IntegerField(choices=category_choices, default=1)
+    category = models.IntegerField(choices=category_choices,)
     description = models.CharField(max_length=500)
 
     def __str__(self):

@@ -17,6 +17,7 @@ class TransactionForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = 'post'
+        self.fields['category'].required = True
         self.helper.layout = Layout(
             'description',
             'amount',
