@@ -26,6 +26,7 @@ category_choices = (
     (9, 'Travel'),
     (10, 'Other'),
     (11, 'Salary'),
+    (12, 'Savings'),
 )
 
 
