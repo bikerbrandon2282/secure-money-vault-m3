@@ -15,7 +15,7 @@ currency_choices = (
     (5, 'Indian Rupee'),
 )
 category_choices = (
-    (1, 'Create New Category'),
+    (1, 'Select An Option'),
     (2, 'Rent'),
     (3, 'Food'),
     (4, 'Transportation'),
