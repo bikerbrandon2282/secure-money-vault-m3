@@ -140,10 +140,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const deleteButtons = document.getElementsByClassName("delete-btn");
   const deleteConfirm = document.getElementById("deleteConfirm");
-  const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+  
 
   document.querySelectorAll('.delete-btn').forEach(button => {
     button.addEventListener('click', function () {
+      const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
       const row = this.closest('tr');
       const transactionId = row.dataset.id;
       deleteConfirm.href = `delete_transaction/${transactionId}`;
