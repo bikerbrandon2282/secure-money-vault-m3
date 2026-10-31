@@ -56,6 +56,7 @@ def change_currency(request):
         )
 
         profile.save()
+        messages.success(request, 'Currency Updated successfully!')
 
     return redirect("account")
 
