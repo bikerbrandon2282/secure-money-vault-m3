@@ -90,7 +90,6 @@ if(calcButton){
 /* End of Script that only pertains to the base page with the calculator */
 
 const submitButton = document.getElementById("save-transaction-btn");
-const transactionForm = document.getElementById("transaction-form");
 
 
 /**
@@ -138,7 +137,6 @@ document.querySelectorAll('.edit-btn').forEach(button => {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  const deleteButtons = document.getElementsByClassName("delete-btn");
   const deleteConfirm = document.getElementById("deleteConfirm");
   
 
